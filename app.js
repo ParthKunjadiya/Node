@@ -8,6 +8,8 @@ const Product = require('./models/product');
 const User = require('./models/user');
 const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
+const Order = require('./models/order');
+const OrderItem = require('./models/order-item');
 
 const app = express();
 
@@ -17,6 +19,9 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const { promises } = require('dns');
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use((req, res, next) => {
     User.findByPk(1)
         .then(user => {
@@ -25,9 +30,6 @@ app.use((req, res, next) => {
         })
         .catch(err => console.log(err));
 });
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
@@ -40,6 +42,9 @@ User.hasOne(Cart);
 Cart.belongsTo(User); // It create userId field in carts table
 Cart.belongsToMany(Product, { through: CartItem }); // It create productId field in cartItems table
 Product.belongsToMany(Cart, { through: CartItem }); // It create cartId field in cartItems table
+Order.belongsTo(User); // It create userId field in orders table
+User.hasMany(Order);
+Order.belongsToMany(Product, { through: OrderItem }); // It create productId field in orderItems table
 
 // It create table for your define Models using sequelize.define() 
 sequelize
@@ -48,7 +53,7 @@ sequelize
     .sync()
     .then(result => {
         return User.findByPk(1);
-        console.log(result);
+        // console.log(result);
     })
     .then(user => {
         if (!user) {

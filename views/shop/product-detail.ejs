@@ -9,10 +9,10 @@
         <hr>
         <div class="image">
             <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
-            <h2><%= product.price %></h2>
-            <p><%= product.description %></p>
-            <%- include('../includes/add-to-cart.ejs', {product}) %>
         </div>
+        <h2><%= product.price %></h2>
+        <p><%= product.description %></p>
+        <%- include('../includes/add-to-cart.ejs', {product}) %>
     </main>
 
     <%- include('../includes/end.ejs') %>
