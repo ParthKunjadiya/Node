@@ -42,8 +42,10 @@ form {
 
 .main-header_nav {
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-header_item-list {
@@ -58,14 +60,21 @@ form {
   padding: 0;
 }
 
-.main-header_item a {
+.main-header_item a,
+.main-header_item button {
+  font: inherit;
+  background: transparent;
+  border: none;
   text-decoration: none;
   color: white;
+  cursor: pointer;
 }
 
 .main-header_item a:hover,
 .main-header_item a:active,
-.main-header_item a.active {
+.main-header_item a.active,
+.main-header_item button:hover,
+.main-header_item button:active {
   color: #d8ebd8;
 }
 
