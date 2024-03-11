@@ -1,14 +1,25 @@
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
+// const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 const User = require('../models/user');
 
-const transporter = nodemailer.createTransport(sendgridTransport({
+// const transporter = nodemailer.createTransport(sendgridTransport({
+//     auth: {
+//         api_key: ''
+//     }
+// }));
+
+// Here, password is created from google account => App Password
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
-        api_key: ''
+        user: 'parthkunjadiya3@gmail.com',
+        pass: 'yref eybc ytxv dksf'
     }
-}));
+});
 
 exports.getLogin = (req, res, next) => {
     let message = req.flash('error');
@@ -93,11 +104,24 @@ exports.postSignup = (req, res, next) => {
                 })
                 .then(result => {
                     res.redirect('/login');
-                    return transporter.sendMail({
+                    // return transporter.sendMail({
+                    //     to: email,
+                    //     from: 'shop@node.com',
+                    //     subject: 'Signup Succeeded',
+                    //     html: '<h1>You Successfully signed up!</h1>'
+                    // });
+                    mailOptions = {
+                        from: 'parthkunjadiya3@gmail.com',
                         to: email,
-                        from: 'shop@node.com',
                         subject: 'Signup Succeeded',
                         html: '<h1>You Successfully signed up!</h1>'
+                    };
+                    return transporter.sendMail(mailOptions, function (err, info) {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
                     });
                 });
         })
