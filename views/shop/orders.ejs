@@ -10,7 +10,7 @@
             <ul class="orders">
                 <% orders.forEach(order => { %>
                     <li class="orders_item">
-                        <h1>Order - # <%= order._id %></h1>
+                        <h1>Order - # <%= order._id %> - <a href="/orders/<%= order._id %>">Invoice</a></h1>
                         <ul class="orders_products">
                             <% order.products.forEach(p => { %>
                                 <li class="orders_products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
