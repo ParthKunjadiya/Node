@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "start": "NODE_ENV=production MONGO_USER=Parth MONGO_PASSWORD=%40Parth45%40 MONGO_DEFAULT_DATABASE=shop STRIPE_KEY=sk_test_51OtpDySFzAljgqh00j16PSnJMRXy6Q951J1206mOLtUP3kcPa0sX6M8O2SkxcLDxP55KV7IvBjlTCkZrsFHLAF8q00O7mFkrPP node app.js",
+    "start-server": "node app.js",
+    "start:dev": "nodemon app.js"
   },
   "author": "Parth Kunjadiya",
   "license": "ISC",
@@ -16,6 +17,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.2.0",
     "csurf": "^1.11.0",
@@ -24,8 +26,10 @@
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
     "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
     "mongodb": "^6.4.0",
     "mongoose": "^8.2.1",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.2",
     "nodemailer": "^6.9.11",

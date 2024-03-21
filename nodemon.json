@@ -1,0 +1,8 @@
+{
+  "env": {
+    "MONGO_USER": "Parth",
+    "MONGO_PASSWORD": "%40Parth45%40",
+    "MONGO_DEFAULT_DATABASE": "shop",
+    "STRIPE_KEY": "sk_test_51OtpDySFzAljgqh00j16PSnJMRXy6Q951J1206mOLtUP3kcPa0sX6M8O2SkxcLDxP55KV7IvBjlTCkZrsFHLAF8q00O7mFkrPP"
+  }
+}
