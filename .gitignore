@@ -24,7 +24,5 @@ Thumbs.db
 # Ignore npm's cache
 .npm/
 
-data/
-images/
 server.cert
 server.key
