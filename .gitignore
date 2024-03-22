@@ -26,3 +26,5 @@ Thumbs.db
 
 data/
 images/
+server.cert
+server.key
