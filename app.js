@@ -112,6 +112,12 @@ app.use((req, res, next) => {
         });
 });
 
+// Middleware to set Content Security Policy header
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "script-src 'unsafe-inline' http://localhost:3000;");
+    next();
+});
+
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);

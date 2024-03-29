@@ -3,6 +3,15 @@
 </head>
 
 <body>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        function redirectToCheckout() {
+            var stripe = Stripe('pk_test_51OtpDySFzAljgqh0jL1bAOJvq5AJY5DrBpYBApU1pgCEC7Dfh04icMpLT2MgbGs3iA842eWlSq0xHyqtQwbtTQqQ003jRpIWpE');
+            stripe.redirectToCheckout({
+                sessionId: '<%= sessionId %>'
+            });
+        }
+    </script>
     <%- include('../includes/navigation.ejs') %>
     <main>
         <ul class="cart_item-list">
@@ -15,19 +24,11 @@
         </ul>
         <div class="centered">
             <h2>Total: $<%= totalSum %></h2>
-        </div>
+        </div>=
         <div class="centered">
-            <button id="order-btn" class="btn">ORDER</button>
-            <script src="https://js.stripe.com/v3/"></script>
-            <script>
-                var stripe = Stripe('pk_test_51OtpDySFzAljgqh0jL1bAOJvq5AJY5DrBpYBApU1pgCEC7Dfh04icMpLT2MgbGs3iA842eWlSq0xHyqtQwbtTQqQ003jRpIWpE');
-                var orderBtn = document.getElementById('order-btn');
-                orderBtn.addEventListener('click', function() {
-                    stripe.redirectToCheckout({
-                        sessionId: '<%= sessionId %>'
-                    })
-                });
-            </script>
+            <div class="centered">
+                <button id="order-btn" class="btn" onclick="redirectToCheckout()">ORDER</button>
+            </div>
         </div>
     </main>
     <%- include('../includes/end.ejs') %>
