@@ -174,7 +174,7 @@ exports.getCheckout = (req, res, next) => {
             });
         })
         .then(session => {
-            // res.set('Content-Security-Policy', "script-src 'unsafe-inline' https://js.stripe.com;");
+            res.set('Content-Security-Policy', "script-src 'unsafe-inline' https://js.stripe.com;");
             res.render('shop/checkout', {
                 path: '/checkout',
                 pageTitle: 'Checkout',
